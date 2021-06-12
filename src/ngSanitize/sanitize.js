@@ -41,12 +41,12 @@ var htmlSanitizeWriter;
  * @description
  *   Sanitizes an html string by stripping all potentially dangerous tokens.
  *
- *   The input is sanitized by parsing the HTML into tokens. All safe tokens (from a whitelist) are
+ *   The input is sanitized by parsing the HTML into tokens. All safe tokens (from a trusted URI list) are
  *   then serialized back to a properly escaped HTML string. This means that no unsafe input can make
  *   it into the returned string.
  *
- *   The whitelist for URL sanitization of attribute values is configured using the functions
- *   `aHrefSanitizationWhitelist` and `imgSrcSanitizationWhitelist` of {@link $compileProvider}.
+ *   The trusted URIs for URL sanitization of attribute values is configured using the functions
+ *   `aHrefSanitizationTrustedUrlList` and `imgSrcSanitizationTrustedUrlList` of {@link $compileProvider}.
  *
  *   The input may also contain SVG markup if this is enabled via {@link $sanitizeProvider}.
  *
@@ -277,8 +277,8 @@ function $SanitizeProvider() {
    * **Note**:
    * The new attributes will not be treated as URI attributes, which means their values will not be
    * sanitized as URIs using `$compileProvider`'s
-   * {@link ng.$compileProvider#aHrefSanitizationWhitelist aHrefSanitizationWhitelist} and
-   * {@link ng.$compileProvider#imgSrcSanitizationWhitelist imgSrcSanitizationWhitelist}.
+   * {@link ng.$compileProvider#aHrefSanitizationTrustedUrlList aHrefSanitizationTrustedUrlList} and
+   * {@link ng.$compileProvider#imgSrcSanitizationTrustedUrlList imgSrcSanitizationTrustedUrlList}.
    *
    * <div class="alert alert-info">
    *   This method must be called during the {@link angular.Module#config config} phase. Once the
